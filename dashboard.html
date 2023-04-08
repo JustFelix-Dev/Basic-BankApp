@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b1c5b9dbea.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+    background-color:rgb(249, 249, 210);
+ }
+ 
+ button {
+    border: 2px solid black;
+    padding: 9px 30px;
+    background-color: white;
+    color: purple;
+    border-radius:10px ;
+    font-weight: 700;
+    transition: all ease-out 100ms;
+ }
+ .mybtn{
+    border: 2px solid black;
+    padding: 9px 30px;
+    background-color: purple;
+    color:white;
+    border-radius:10px ;
+    font-weight: 500;
+    transition: all ease-out 100ms;
+ }
+ .mybtn:hover{
+    transform: scale(0.96);
+    cursor: grab;
+ }
+
+ button:hover{
+    transform: scale(0.96);
+ }
+
+ input[type="text"]{
+    border: none;
+    background-color: transparent;
+    border-bottom: 3px solid white;
+    outline: none;
+    caret-color: white;
+    color: white;
+ }
+ #image{
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+ }
+ #flex{
+    display: flex;
+    justify-content: center;
+ }
+ #flex .box{
+    width:27%;
+    height: 25%;
+    border: 3px solid purple;
+    margin: 0 20px 10px 10px;
+    padding: 15px;
+    font-size: 27px;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 0 7px purple;
+ }
+ #flex .box:hover{
+    box-shadow: 0 0 15px purple;
+ }
+
+ #flex3{
+    display: flex;
+    justify-content: center;
+ }
+ #flex3 button {
+    margin: 0 10px;
+ }
+ #flex2{
+     display: flex;
+     margin-left: 30%;
+    background-color: purple;
+    height: 10%;
+    width: 36%;
+    justify-content: center;
+    border-radius: 20px;
+ }
+#flex2 .inp {
+    margin: 20px;
+}
+ .bank{
+    font-size: 39px;
+ }
+ .alert{
+    height: 7px;
+    width: 100%;
+    background-color: palevioletred;
+    border: 2px solid red;
+    margin-left: 35%;
+    border-radius: 20px;
+ }
+
+ /* My Dashboard */
+ .dashImg{
+    margin-left: 120px;
+ }
+ .centerDash{
+    text-align:center;
+ }
+
+ 
+</style>
+<body>
+    <section>
+        <!-- Off-Canvas -->
+          <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="staticBackdropLabel">My Dashboard :</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" id="myDash">
+            
+            </div>
+          </div>
+        <div id="disp">
+        </div>
+        <!-- <img src="" alt="" id="image"> -->
+        <hr>
+        <span class="alert" style="display:none;" id="myAlert" >
+            <i class="fa-solid fa-triangle-exclamation"></i> You don't have sufficient funds for this transaction. Please make deposits!
+        </span><br>
+        <div id="flex">
+            <div  class="box">Deposit <i class="fa-sharp bank fa-solid fa-piggy-bank"></i><br><br> <br>$ <span id="deposited">0</span> </div>
+            <div class="box">Withdraw <i class="fa-solid bank fa-money-bill-transfer"></i><br><br> <br>$ <span id="withdrawed">0</span></div>
+            <div class="box">Balance   <i class="fa-solid bank fa-money-bill-1-wave"></i><br><br> <br>$ <span id="balance">0</span></div>
+        </div><br>
+        <div id="flex2">
+            <div class=" inp input1">
+                <input type="text" id="depositedInput" placeholder="$$$"><br><br>
+                <button onclick="deposit()">Deposit Money</button>
+            </div>
+            <div class=" inp input2">
+                <input type="text" id="withdrawMoney" placeholder="$$$"><br><br>
+                <button onclick="withdraw()">Withdraw Money</button>
+            </div>
+        </div> <br>
+        <div id="flex3">
+            <button class="mybtn" data-bs-toggle= "offcanvas" data-bs-target="#staticBackdrop" onclick="dash()">Dashboard</button>
+            <button class="mybtn" onclick="viewDashboard()">View Transactions</button>
+        </div>
+        <div>
+            <table border="1" class="table table-striped table-responsive" id="table" style="display:none;width:100%;" >
+                    
+            </table>
+        </div>
+    </section>
+    <script>
+         var allCustomers = JSON.parse(localStorage.getItem('localUsers'))
+         var myIndex = JSON.parse(localStorage.getItem('storedIndex'))
+         disp.innerHTML = `<h1>Hi, Welcome ${allCustomers[myIndex].firstName}😊</h1>
+                           <h2>Account-Number :${allCustomers[myIndex].accountNumber}<h2>
+         `
+        disp.style.color = "black";
+        image.src= `${allCustomers[myIndex].profile}`
+       
+        function deposit() {
+            myAlert.style.display = "none";
+          const value = document.getElementById('depositedInput').value;
+         const depositValue = Number(deposited.innerText) + Number(value);
+         const balanceValue = Number(balance.innerText) + Number(value);
+          deposited.innerText = depositValue;
+          balance.innerText = balanceValue;
+         depositedInput.value = ""
+         
+        }
+
+        function withdraw(){
+            const withdraw = document.getElementById('withdrawMoney').value;
+            if(Number(withdrawMoney.value) > Number(balance.innerText)){
+                 myAlert.style.display = "inline";
+            }else{
+                const withdrawValue = Number(withdrawed.innerText) + Number(withdraw);
+                const balanceValue = Number(balance.innerText) - Number(withdraw)
+                withdrawed.innerText = withdrawValue;
+                balance.innerText = balanceValue;
+                withdrawMoney.value = ""
+            }
+        }
+       
+        function dash(){
+            myDash.innerHTML = `
+                 <div>
+                  <img src="./Avatar-removebg-preview.png" alt="myImage" width="120" height="120" class="dashImg">
+                  <h4 class="centerDash">${allCustomers[myIndex].firstName} ${allCustomers[myIndex].middleName} ${allCustomers[myIndex].lastName}</h4>
+                  <h6 class="centerDash">Acc-No: ${allCustomers[myIndex].accountNumber}</h6>
+                  <h6 class="centerDash">BVN : ${allCustomers[myIndex].bvn}</h6>
+                  <hr>
+                  <h5>First-Name : ${allCustomers[myIndex].firstName}</h5>
+                  <h5>Middle-Name: ${allCustomers[myIndex].middleName}</h5>
+                  <h5>Last-Name : ${allCustomers[myIndex].lastName}</h5>
+                  <h5>Email : ${allCustomers[myIndex].email}</h5>
+                  <h5>Phone-Number : ${allCustomers[myIndex].phoneNumber}</h5>
+                  <h5>BVN :  ${allCustomers[myIndex].bvn}</h5>
+                  <h5>State :  ${allCustomers[myIndex].state}</h5>
+                  <h5>Country :  ${allCustomers[myIndex].country}</h5>
+                  <h5>D.O.B :  ${allCustomers[myIndex].dob}</h5>
+                  <h5>Gender :  ${allCustomers[myIndex].gender}</h5>
+                  <h5>Marital-Status :  ${allCustomers[myIndex].maritalStatus}</h5>
+                  <h5>NIN :  ${allCustomers[myIndex].nin}</h5>
+                  <h5>Account-Number :  ${allCustomers[myIndex].accountNumber}</h5>
+                  <hr>
+                  <button class="mybtn">Edit Details </button>
+              </div>
+            `
+        }
+
+        function viewDashboard(){
+            table.style.display = "block";
+                 table.innerHTML = `
+                          <tr>
+                            <th>S/N</th>
+                            <th>Amount</th>
+                            <th>Trx.ID</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                            </tr> 
+                 `
+        }
+
+    </script>
+</body>
+</html>

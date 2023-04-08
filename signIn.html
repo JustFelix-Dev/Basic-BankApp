@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In</title>
+    <script src="https://kit.fontawesome.com/b1c5b9dbea.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+    background-color: purple;
+ }
+
+ section {
+    position: relative;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width:90rem;
+    height:47rem;
+    border-radius: 20px;
+ }
+
+  section .center{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    border: 6px dotted white;
+    background-color: purple;
+    width: 50%;
+    height: 60%;
+   transform: translate(-50%,-50%);
+  }
+
+  .marquee{
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    color: purple;
+    padding: 7px;
+    border-radius: 3px;
+  }
+ h1{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+ }
+ form{
+    margin-left: 20%;
+    margin-top: 3%;
+ }
+ p{
+    color: white;
+    font-size: 1.2rem;
+ }
+ input[type="text"]{
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 10px;
+    outline: none;
+    width: 71%;
+    color: white;
+ }
+   
+ input[type="text"]:hover{
+    border-bottom: 4px solid white;
+    caret-color: white;
+    color: white;
+ }
+
+
+ button{
+    padding: 10px 60px;
+    background-color: white;
+    color: purple;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-out 200ms;
+    margin-left: 20%;
+ }
+
+ button:hover{
+    transform: scale(0.96);
+ }
+</style>
+<body>
+    <section>
+        <div class="center">
+            <marquee behavior="left" direction="">
+                <div class="marquee">
+                    Welcome to FelixBanks<i class="fa-sharp fa-solid fa-building-columns"></i>!. The best bank there is💰💰💰. Enjoy!
+                </div>
+            </marquee>
+            <h1>Sign-In:</h1>
+            <form>
+                <p>E-mail:</p>
+                <input type="text" id="mail" name="mail" placeholder="Enter your E-mail" required>
+                <p>Password:</p>
+                <input type="text" id="pass" placeholder="Enter your Password" required>
+                <br><br><br>
+            </form>
+            <button onclick="signIn()">Sign-In &#8593;</button>
+        </div>
+    </section>
+
+    <script>
+       var allCustomers = JSON.parse(localStorage.getItem('localUsers'))
+       function signIn(){
+           var found = false;
+           for (let index = 0; index < allCustomers.length; index++) {
+               if(allCustomers[index].email == mail.value && allCustomers[index].passWord == pass.value){
+                  localStorage.setItem('storedIndex',JSON.stringify(index))
+                  found = true;
+                  break;
+                }
+            }
+            if(found == true){
+                window.location.href = "dashboard.html"
+            }
+            else{
+                alert('Check your login details correctly')
+            }
+        }
+        
+        
+
+    </script>
+    
+</body>
+</html>

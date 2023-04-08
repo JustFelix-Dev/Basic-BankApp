@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b1c5b9dbea.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+        </head>
+<style>
+    body {
+        background-color: purple;
+    }
+
+   main section {
+        display: flex;
+    }
+
+    main {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        width: 90%;
+        height: 700px;
+        box-shadow: 0 0 5px purple,0 0 100px black;
+        border-top: 6px solid purple;
+    }
+
+   
+    main section .image {
+      align-self:center;
+    }
+    img {
+        transition: all ease-in-out 200ms;
+    }
+
+    img:hover{
+        transform:scale(0.98);
+        cursor: grab;
+    }
+
+   main section .main {
+        align-self: center;
+        margin-top: 82px;
+        margin-left: 5rem;
+    }
+    .navbar{
+        background-color: white;
+    }
+    .navbar-brand, .nav-link,.dropdown-menu .dropdown-item ,  .main h1, h4
+{
+        color: purple;
+    }
+    .btn{
+        background-color: purple;
+        color:white;
+        border: 2px solid purple;
+    }
+    .btn:hover{
+        background-color:white;
+        color:purple;
+        border: 2px solid purple;
+    }
+
+    .button {
+        border: 3px solid purple;
+        background-color:white;
+        color:purple;
+        padding:5px 25px;
+        border-radius: 10px;
+        transition: all ease-in-out 200ms;
+        
+    }
+
+    .button:hover {
+        border: 3px solid purple;
+        background-color:purple;
+        color:white;
+        transform: scale(0.98);
+        box-shadow: 0 0 11px black,0 0 10px black;
+        cursor: grab;
+    }
+
+    .get {
+      border-radius: 0 10px 10px 0;
+    }
+
+    input[type="email"]{
+        height: 38px;
+        background-color: rgb(210, 179, 238);
+        border-radius:10px 0 0 10px;
+    }
+    .main h1,.navbar-brand{
+        font-family: 'Roboto Slab', serif;
+    }
+
+</style>
+
+<body>
+  <main>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+         <strong> <a class="navbar-brand" href="#"><i class="fa-sharp fa-solid fa-building-columns"></i> FelixBanks!</a></strong>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+               <b> <a class="nav-link active" aria-current="page" href="#" style="color: purple;">Home</a></b>
+              </li>
+              <li class="nav-item">
+               <b> <a class="nav-link" href="#">Help</a></b>
+              </li>
+              <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <b> Business banking</b>
+              </a> 
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#"><b>Business Loans</b></a></li>
+                  <li><a class="dropdown-item" href="#"><b>Card Services</b></a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#"><b>Merchant Services</b></a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <section>
+        <div class="main">
+            <h1><i class="fa-sharp fa-solid fa-building-columns"></i>FelixBanks!</h1>
+            <h4>A powerful business banking System for all. <br>
+                Experience seamless transactions like never before.
+            </h4>
+            <h6>This is built for small, medium and large enterprises,business owners,freelancers and individuals.
+                No hassle, glitch or hidden fees.
+            </h6>
+            <br>
+            <input type="email" placeholder="Enter Your Email"><button class="button get">Get Started</button>
+            <br><br>
+            <img src="./google-play-badge.png" alt=""  width="170" height="75"> <img src="./appstorelogo.png" alt="" width="170" height="50">
+            <br><br>
+            <button class="button" onclick="signUp()">Sign-Up Here &#8593;</button><br><br>
+            <p><b> Have an Account already?. Login in Here:</b></p><button class="button" onclick="signIn()">Log-In &#8593;</button>
+        </div>
+        <div class="image">
+            <img src="./undraw_digital_currency_qpak.svg" alt="bank-img" width="600rem;">
+        </div>
+    </section>
+  </main>   
+    <script>
+        signUp = () => window.location.href = "signUp.html";
+        signIn = () => window.location.href = "signIn.html";
+
+    </script>
+</body>
+
+</html>
